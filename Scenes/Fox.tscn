@@ -1,0 +1,26 @@
+[gd_scene load_steps=6 format=3 uid="uid://81oww7lg31ie"]
+
+[ext_resource type="Script" path="res://Scripts/Fox.gd" id="1_wrwfl"]
+[ext_resource type="PackedScene" uid="uid://cg74y7p6yhro5" path="res://Scenes/Rabbit.tscn" id="2_x4v7e"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_eud0h"]
+height = 1.0089
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lp6h3"]
+albedo_color = Color(1, 0.698039, 0.298039, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_wc4oa"]
+material = SubResource("StandardMaterial3D_lp6h3")
+
+[node name="Fox" type="CharacterBody3D" groups=["foxes"]]
+script = ExtResource("1_wrwfl")
+rabbit_scene = ExtResource("2_x4v7e")
+fox_scene = null
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+shape = SubResource("CapsuleShape3D_eud0h")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+mesh = SubResource("BoxMesh_wc4oa")

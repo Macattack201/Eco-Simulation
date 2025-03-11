@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://dwtv6nn54yy4l"]
+
+[ext_resource type="Script" path="res://Scripts/CameraController.gd" id="1_wh42a"]
+[ext_resource type="Script" path="res://Scripts/SimulationManager.gd" id="2_8u4sf"]
+[ext_resource type="PackedScene" uid="uid://cg74y7p6yhro5" path="res://Scenes/Rabbit.tscn" id="3_i364o"]
+
+[node name="World" type="Node3D"]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 3, 0)
+
+[node name="CameraRig" type="Node3D" parent="."]
+transform = Transform3D(-0.876676, 0.12016, -0.465833, 1.3237e-09, 0.968305, 0.249772, 0.481081, 0.218969, -0.84889, 1.09243, 5, 0)
+script = ExtResource("1_wh42a")
+
+[node name="Camera3D" type="Camera3D" parent="CameraRig"]
+transform = Transform3D(1, 0, 2.98023e-08, 0, 1, 0, -2.98023e-08, 0, 1, 0, 0, 0)
+
+[node name="SimulationManager" type="Node3D" parent="."]
+script = ExtResource("2_8u4sf")
+rabbit_scene = ExtResource("3_i364o")
