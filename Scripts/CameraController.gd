@@ -38,31 +38,26 @@ func handle_movement(delta):
 	var direction = Vector3.ZERO
 	var speed = move_speed
 
-	# Sprinting (faster movement when Shift is held)
 	if Input.is_action_pressed("camera_down") and !Input.is_action_pressed("camera_up"):
 		speed *= sprint_multiplier
 
-	# Lateral movement (WASD)
-	if Input.is_action_pressed("camera_forward"):  # W
-		direction -= transform.basis.z  # Move forward relative to camera
-	if Input.is_action_pressed("camera_backward"):  # S
-		direction += transform.basis.z  # Move backward
-	if Input.is_action_pressed("camera_left"):  # A
-		direction -= transform.basis.x  # Move left
-	if Input.is_action_pressed("camera_right"):  # D
-		direction += transform.basis.x  # Move right
+	if Input.is_action_pressed("camera_forward"):
+		direction -= transform.basis.z
+	if Input.is_action_pressed("camera_backward"):
+		direction += transform.basis.z
+	if Input.is_action_pressed("camera_left"):
+		direction -= transform.basis.x
+	if Input.is_action_pressed("camera_right"):
+		direction += transform.basis.x
 
-	# Vertical movement (Space = Up, Shift = Down)
 	if Input.is_action_pressed("camera_up"):
 		direction.y += 1
 	if Input.is_action_pressed("camera_down") and !Input.is_action_pressed("camera_forward") and !Input.is_action_pressed("camera_backward"):
 		direction.y -= 1
 
-	# Apply movement without modifying direction
 	if direction != Vector3.ZERO:
 		velocity = direction.normalized() * speed * delta
 		global_transform.origin += velocity
 
 func update_rotation():
-	# Apply rotation while maintaining the camera's facing direction
 	transform.basis = Basis.from_euler(Vector3(deg_to_rad(rotation_x), deg_to_rad(rotation_y), 0))

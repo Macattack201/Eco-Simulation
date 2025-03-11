@@ -2,8 +2,8 @@ extends Node3D
 
 class_name WaterSource
 
-@export var resource_type: String = "water"  # Can be "berry" or "water"
-@export var quantity: int = 5  # Amount of resource available
+@export var resource_type: String = "water"
+@export var quantity: int = 5
 
 func consume():
 	if quantity > 0:

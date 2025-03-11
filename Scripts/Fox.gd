@@ -2,13 +2,14 @@ extends Node3D
 
 class_name Fox
 
-@export var move_speed: int = 1  # Tiles moved per step
-@export var hunger_threshold: float = 50.0  # When to seek food
-@export var thirst_threshold: float = 50.0  # When to seek water
-@export var is_fox: bool = true  # Determines if the entity is a fox
-@export var reproduction_cooldown: float = 30.0  # Time before an animal can reproduce again
+@export var move_speed: int = 1
+@export var hunger_threshold: float = 50.0
+@export var thirst_threshold: float = 50.0
+@export var is_fox: bool = true
+@export var reproduction_cooldown: float = 30.0
+@export var grid_size: int = 100
 
-var simulation_manager: Node = null  # Reference to the Simulation Manager
+var simulation_manager: Node = null
 var hunger: float = 100.0
 var thirst: float = 100.0
 var reproduction_timer: float = 0.0
@@ -16,12 +17,11 @@ var target: Node3D = null
 var predator: Node3D = null
 
 func _ready():
-	# Attempt to find the simulation manager in the scene
 	simulation_manager = get_tree().get_first_node_in_group("simulation_manager")
 
 func run():
 	update_needs()
-	reproduction_timer -= 1  # Decrease reproduction timer
+	reproduction_timer -= 1
 	
 	if reproduction_timer <= 0:
 		find_mate()
@@ -38,8 +38,8 @@ func run():
 		wander()
 
 func update_needs():
-	hunger -= 1  # Decrease hunger over time
-	thirst -= 1  # Decrease thirst over time
+	hunger -= 1
+	thirst -= 1
 	
 	if thirst < thirst_threshold:
 		find_nearest_water()
@@ -73,7 +73,7 @@ func find_mate():
 				nearest_mate = mate
 	
 	if nearest_mate:
-		target = nearest_mate  # Move toward mate instead of instant reproduction
+		target = nearest_mate
 
 func find_nearest_target(targets: Array) -> Node3D:
 	var nearest: Node3D = null
@@ -89,52 +89,74 @@ func find_nearest_target(targets: Array) -> Node3D:
 func move_towards(destination: Vector3):
 	var direction = (destination - position).normalized()
 	var new_position = position + Vector3(direction.x * move_speed, 0, direction.z * move_speed)
+	
+	new_position.x = clamp(new_position.x, 0, grid_size - 1)
+	new_position.z = clamp(new_position.z, 0, grid_size - 1)
+	
 	position = new_position
 	
 	if position.distance_to(destination) < 1:
 		if target and is_instance_valid(target) and (target.is_in_group("foxes") or target.is_in_group("rabbits")):
-			reproduce(target)  # Reproduce only when they reach the mate
+			reproduce(target)
 		else:
 			consume_target()
 
 func consume_target():
-	if target and is_instance_valid(target):  # Ensure target is still valid
+	if target and is_instance_valid(target):
 		if target.has_method("consume"):
 			target.consume()
-			target = null  # Reset target after consuming
+			target = null
 			if is_fox:
-				hunger = 100.0  # Reset hunger when eating a rabbit
+				hunger = 100.0
 			else:
-				thirst = 100.0  # Reset thirst when drinking water
+				thirst = 100.0
 		elif target.is_in_group("rabbits") and is_fox:
 			print("Fox ate rabbit:", target)
 			
-			# Remove rabbit from Simulation Manager's entities list
 			if simulation_manager and simulation_manager.has_method("remove_entity"):
 				simulation_manager.remove_entity(target)
 			
-			var temp_target = target  # Store reference before nullifying
-			target = null  # Immediately remove reference to avoid errors
-			temp_target.call_deferred("queue_free")  # Delay deletion to prevent crashes
-			hunger = 100.0  # Reset hunger after eating
+			var temp_target = target
+			target = null
+			temp_target.call_deferred("queue_free")
+			hunger = 100.0
 
 func reproduce(mate: Node3D):
-	if simulation_manager and simulation_manager.has_method("add_entity"):
+	if simulation_manager and simulation_manager.has_method("add_entity") and mate.reproduction_timer <= 0 and reproduction_timer <= 0:
+		reproduction_timer = reproduction_cooldown
+		mate.reproduction_timer = reproduction_cooldown
+		
 		var new_animal = duplicate()
 		new_animal.position = position + Vector3(randi() % 3 - 1, 0, randi() % 3 - 1)
+		
+		new_animal.position.x = clamp(new_animal.position.x, 0, grid_size - 1)
+		new_animal.position.z = clamp(new_animal.position.z, 0, grid_size - 1)
 		new_animal.reproduction_timer = reproduction_cooldown
-		mate.reproduction_timer = reproduction_cooldown
-		reproduction_timer = reproduction_cooldown
+
 		simulation_manager.add_entity(new_animal)
-		get_parent().add_child(new_animal)  # Ensure it spawns in the scene
+		get_parent().add_child(new_animal)
+
 		print("New animal born at: ", new_animal.position)
+
+		target = null
+		mate.target = null
 
 func flee_from(threat_position: Vector3):
 	var direction = (position - threat_position).normalized()
 	var new_position = position + Vector3(direction.x * move_speed, 0, direction.z * move_speed)
+	
+	new_position.x = clamp(new_position.x, 0, grid_size - 1)
+	new_position.z = clamp(new_position.z, 0, grid_size - 1)
+	
 	position = new_position
 
 func wander():
 	var x_offset = randi() % 3 - 1
 	var z_offset = randi() % 3 - 1
-	position += Vector3(x_offset * move_speed, 0, z_offset * move_speed)
+	
+	var new_position = position + Vector3(x_offset * move_speed, 0, z_offset * move_speed)
+	
+	new_position.x = clamp(new_position.x, 0, grid_size - 1)
+	new_position.z = clamp(new_position.z, 0, grid_size - 1)
+	
+	position = new_position

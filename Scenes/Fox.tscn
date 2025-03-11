@@ -10,7 +10,7 @@ material = SubResource("StandardMaterial3D_rvxt2")
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_i4w6s"]
 
-[node name="Fox" type="CharacterBody3D"]
+[node name="Fox" type="CharacterBody3D" groups=["foxes"]]
 script = ExtResource("1_d71t7")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]

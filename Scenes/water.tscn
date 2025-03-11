@@ -11,7 +11,7 @@ size = Vector2(1, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_387hc"]
 
-[node name="Water" type="StaticBody3D"]
+[node name="Water" type="StaticBody3D" groups=["water"]]
 script = ExtResource("1_rwwed")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]

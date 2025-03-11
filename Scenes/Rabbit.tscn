@@ -9,7 +9,7 @@
 [sub_resource type="SphereMesh" id="SphereMesh_3s7ra"]
 material = SubResource("StandardMaterial3D_0b4pp")
 
-[node name="Rabbit" type="CharacterBody3D"]
+[node name="Rabbit" type="CharacterBody3D" groups=["rabbits"]]
 script = ExtResource("1_qkps4")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
