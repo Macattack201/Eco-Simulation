@@ -1,22 +1,22 @@
-[gd_scene load_steps=5 format=3 uid="uid://byvh8efd3hh23"]
+[gd_scene load_steps=5 format=3 uid="uid://b0f4yxvgpr3qc"]
 
-[ext_resource type="Script" path="res://Scripts/Berry.gd" id="1_jl4tc"]
+[ext_resource type="Script" path="res://Scripts/Berry.gd" id="1_o8he4"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2bwxh"]
-albedo_color = Color(0.576471, 0.396078, 1, 1)
+[sub_resource type="SphereShape3D" id="SphereShape3D_emvma"]
 
-[sub_resource type="PrismMesh" id="PrismMesh_vqjx5"]
-material = SubResource("StandardMaterial3D_2bwxh")
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_l1dmy"]
+albedo_color = Color(0.682353, 0.298039, 1, 1)
 
-[sub_resource type="SphereShape3D" id="SphereShape3D_0p4uk"]
+[sub_resource type="SphereMesh" id="SphereMesh_2mh6o"]
+material = SubResource("StandardMaterial3D_l1dmy")
 
-[node name="Berry" type="StaticBody3D" groups=["food"]]
-script = ExtResource("1_jl4tc")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
-mesh = SubResource("PrismMesh_vqjx5")
+[node name="Berry" type="StaticBody3D"]
+script = ExtResource("1_o8he4")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
-shape = SubResource("SphereShape3D_0p4uk")
+shape = SubResource("SphereShape3D_emvma")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+mesh = SubResource("SphereMesh_2mh6o")
