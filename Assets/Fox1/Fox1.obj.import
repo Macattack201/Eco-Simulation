@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://bxwov1g2hryhk"
+path="res://.godot/imported/Fox1.obj-7036d9a53b41c6a2169c42f9ff0b5593.mesh"
+
+[deps]
+
+files=["res://.godot/imported/Fox1.obj-7036d9a53b41c6a2169c42f9ff0b5593.mesh"]
+
+source_file="res://Assets/Fox1/Fox1.obj"
+dest_files=["res://.godot/imported/Fox1.obj-7036d9a53b41c6a2169c42f9ff0b5593.mesh", "res://.godot/imported/Fox1.obj-7036d9a53b41c6a2169c42f9ff0b5593.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false

@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://bm0gb2kq7hog1"
+path="res://.godot/imported/BabyFox.obj-eb29b6928828f330caea9a5215e3ec43.mesh"
+
+[deps]
+
+files=["res://.godot/imported/BabyFox.obj-eb29b6928828f330caea9a5215e3ec43.mesh"]
+
+source_file="res://Assets/BabyFox/BabyFox.obj"
+dest_files=["res://.godot/imported/BabyFox.obj-eb29b6928828f330caea9a5215e3ec43.mesh", "res://.godot/imported/BabyFox.obj-eb29b6928828f330caea9a5215e3ec43.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false

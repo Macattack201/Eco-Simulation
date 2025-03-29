@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://bplr3273atjyp"]
+[gd_scene load_steps=9 format=3 uid="uid://bplr3273atjyp"]
 
 [ext_resource type="Script" path="res://Scripts/CameraController.gd" id="1_wh42a"]
 [ext_resource type="Script" path="res://Scripts/SimulationManager.gd" id="2_8u4sf"]
@@ -8,15 +8,6 @@
 [ext_resource type="PackedScene" uid="uid://b0f4yxvgpr3qc" path="res://Scenes/berry.tscn" id="4_s2ek3"]
 [ext_resource type="PackedScene" uid="uid://pig7p4o5bj85" path="res://Scenes/water.tscn" id="7_mnckt"]
 [ext_resource type="PackedScene" uid="uid://c1t14t3lp1huj" path="res://Scenes/deep_water.tscn" id="8_0nwb2"]
-[ext_resource type="PackedScene" uid="uid://j7acu3up0o8d" path="res://Scenes/sand.tscn" id="8_v1p3o"]
-
-[sub_resource type="Environment" id="Environment_y4t8l"]
-ambient_light_source = 2
-ambient_light_color = Color(1, 1, 1, 1)
-ambient_light_energy = 3.0
-fog_enabled = true
-fog_light_color = Color(0.234374, 0.470583, 1, 1)
-fog_density = 0.0025
 
 [node name="World" type="Node3D"]
 
@@ -25,9 +16,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.993396, 0)
 script = ExtResource("1_wh42a")
 
 [node name="Camera3D" type="Camera3D" parent="CameraRig"]
-environment = SubResource("Environment_y4t8l")
-fov = 49.3
-size = 100.0
 
 [node name="SimulationManager" type="Node3D" parent="."]
 script = ExtResource("2_8u4sf")
@@ -36,8 +24,7 @@ rabbit_scene = ExtResource("4_8dx6l")
 fox_scene = ExtResource("4_8vg44")
 berry_scene = ExtResource("4_s2ek3")
 water_scene = ExtResource("7_mnckt")
-sand_scene = ExtResource("8_v1p3o")
 deep_water_scene = ExtResource("8_0nwb2")
 
-[node name="Water" parent="." instance=ExtResource("8_0nwb2")]
-transform = Transform3D(1000, 0, 0, 0, 1, 0, 0, 0, 1000, 0, -0.1, 0)
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.379924, 0.925018, 0, -0.925018, 0.379924, 0, 9.54343, 0)

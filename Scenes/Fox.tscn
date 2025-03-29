@@ -1,22 +1,23 @@
-[gd_scene load_steps=5 format=3 uid="uid://c3bpm3qoopv1u"]
+[gd_scene load_steps=6 format=3 uid="uid://c3bpm3qoopv1u"]
 
 [ext_resource type="Script" path="res://Scripts/Fox.gd" id="1_d71t7"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rvxt2"]
-albedo_color = Color(1, 0.490196, 0, 1)
-
-[sub_resource type="SphereMesh" id="SphereMesh_6i6k7"]
-material = SubResource("StandardMaterial3D_rvxt2")
+[ext_resource type="ArrayMesh" uid="uid://di1te4awby0w7" path="res://Assets/Wolf (1)/Wolf.obj" id="2_xd8w0"]
+[ext_resource type="Texture2D" uid="uid://cf76w7iyhko1t" path="res://Assets/wolf/Wolf/Wolf Base Color.png" id="3_reax7"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_i4w6s"]
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_uxpqk"]
+albedo_texture = ExtResource("3_reax7")
+
 [node name="Fox" type="CharacterBody3D" groups=["foxes"]]
 script = ExtResource("1_d71t7")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
-mesh = SubResource("SphereMesh_6i6k7")
+fox_scene = null
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 shape = SubResource("SphereShape3D_i4w6s")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.008, 0, 0, 0, 0.008, 0, 0, 0, 0.008, 0, 0, 0)
+mesh = ExtResource("2_xd8w0")
+surface_material_override/0 = SubResource("StandardMaterial3D_uxpqk")

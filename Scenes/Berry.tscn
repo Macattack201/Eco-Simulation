@@ -10,13 +10,13 @@ albedo_color = Color(0.682353, 0.298039, 1, 1)
 [sub_resource type="SphereMesh" id="SphereMesh_2mh6o"]
 material = SubResource("StandardMaterial3D_l1dmy")
 
-[node name="Berry" type="StaticBody3D" groups=["food"]]
+[node name="Berry" type="StaticBody3D" groups=["foods"]]
 script = ExtResource("1_o8he4")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+transform = Transform3D(0.66, 0, 0, 0, 0.66, 0, 0, 0, 0.66, 0.11068, 0.33, 0.121408)
 shape = SubResource("SphereShape3D_emvma")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+transform = Transform3D(0.66, 0, 0, 0, 0.66, 0, 0, 0, 0.66, 0.11068, 0.33, 0.121408)
 mesh = SubResource("SphereMesh_2mh6o")

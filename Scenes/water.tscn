@@ -2,21 +2,23 @@
 
 [ext_resource type="Script" path="res://Scripts/WaterSource.gd" id="1_rwwed"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_r1p0u"]
-albedo_color = Color(0, 0.262745, 1, 1)
-
-[sub_resource type="PlaneMesh" id="PlaneMesh_saqpx"]
-material = SubResource("StandardMaterial3D_r1p0u")
-size = Vector2(1, 1)
-
 [sub_resource type="BoxShape3D" id="BoxShape3D_387hc"]
 
-[node name="Water" type="StaticBody3D" groups=["water"]]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5fdqu"]
+albedo_color = Color(0, 0.427451, 1, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_76xee"]
+material = SubResource("StandardMaterial3D_5fdqu")
+
+[node name="Water" type="StaticBody3D" groups=["waters"]]
 script = ExtResource("1_rwwed")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-mesh = SubResource("PlaneMesh_saqpx")
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.1, 0, 0, 0, 1, 0, 0, 0)
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
 shape = SubResource("BoxShape3D_387hc")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D"]
+mesh = SubResource("BoxMesh_76xee")
+skeleton = NodePath("../..")

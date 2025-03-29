@@ -1,21 +1,54 @@
-[gd_scene load_steps=5 format=3 uid="uid://csj0hn6ep1x2h"]
+[gd_scene load_steps=9 format=3 uid="uid://csj0hn6ep1x2h"]
 
-[ext_resource type="Script" path="res://Scripts/Rabbit.gd" id="1_qkps4"]
+[ext_resource type="Script" path="res://Scripts/Rabbit.gd" id="1_3usqc"]
+[ext_resource type="Texture2D" uid="uid://c6r28ohbcicaj" path="res://Assets/bunny/Bunny/Bunny Base Color.png" id="2_ljy6g"]
+[ext_resource type="ArrayMesh" uid="uid://cdohh42i4br00" path="res://Assets/Bunny (1)/Bunny.obj" id="2_m50is"]
+[ext_resource type="PackedScene" uid="uid://he8xdy1wdy3v" path="res://Scenes/circle.tscn" id="4_dam5l"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_2l0or"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0b4pp"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tuvke"]
+albedo_texture = ExtResource("2_ljy6g")
 
-[sub_resource type="SphereMesh" id="SphereMesh_3s7ra"]
-material = SubResource("StandardMaterial3D_0b4pp")
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ws6bn"]
+albedo_color = Color(0, 0, 0, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_ac72y"]
+material = SubResource("StandardMaterial3D_ws6bn")
 
 [node name="Rabbit" type="CharacterBody3D" groups=["rabbits"]]
-script = ExtResource("1_qkps4")
+script = ExtResource("1_3usqc")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 shape = SubResource("SphereShape3D_2l0or")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
-mesh = SubResource("SphereMesh_3s7ra")
+transform = Transform3D(-1.09278e-09, 0, 0.025, 0, 0.025, 0, -0.025, 0, -1.09278e-09, 0, 0, 0)
+mesh = ExtResource("2_m50is")
+surface_material_override/0 = SubResource("StandardMaterial3D_tuvke")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.045, 0, 0, 0, 0.045, 0, 0, 0, 0.045, -0.113687, 0.462554, 0.6336)
+mesh = SubResource("SphereMesh_ac72y")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.045, 0, 0, 0, 0.045, 0, 0, 0, 0.045, 0.116668, 0.462554, 0.6336)
+mesh = SubResource("SphereMesh_ac72y")
+
+[node name="Danger" parent="." instance=ExtResource("4_dam5l")]
+visible = false
+radius = 10.0
+color = Color(1, 0, 0, 0.270588)
+
+[node name="Speed Boost" parent="." instance=ExtResource("4_dam5l")]
+radius = 1.0
+thickness = 0.2
+color = Color(0.246387, 0.504796, 1, 1)
+y_offset = 0.06
+
+[node name="Toxic" parent="." instance=ExtResource("4_dam5l")]
+radius = 0.8
+thickness = 0.2
+color = Color(0.489857, 0.737381, 0, 1)
+y_offset = 0.07
