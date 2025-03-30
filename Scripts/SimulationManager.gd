@@ -2,7 +2,7 @@ extends Node3D
 
 class_name SimulationManager
 
-@export var step_time: float = 0.1
+@export var step_time: float = 1.0
 @export var grid_size: int = 150
 @export var num_rabbits: int = 25
 @export var num_foxes: int = 10
@@ -15,6 +15,12 @@ class_name SimulationManager
 @export var water_scene: PackedScene
 @export var sand_scene: PackedScene
 @export var deep_water_scene: PackedScene
+@export var population_graph_scene: PackedScene
+
+var population_graph_instance: Node = null
+
+var rabbit_population := []
+var fox_population := []
 
 var terrain_noise := FastNoiseLite.new()
 var entities: Array = []
@@ -25,9 +31,36 @@ func _ready():
 	step_timer.wait_time = step_time
 	step_timer.autostart = true
 	step_timer.one_shot = false
+	step_timer.timeout.connect(_on_step_timer_timeout)
 	add_child(step_timer)
 
 	generate_world()
+
+func _on_step_timer_timeout():
+	var rabbit_count = get_tree().get_nodes_in_group("rabbits").filter(func(n): return n.alive).size()
+	var fox_count = get_tree().get_nodes_in_group("foxes").filter(func(n): return n.alive).size()
+
+	rabbit_population.append(rabbit_count)
+	fox_population.append(fox_count)
+
+	# Stop if everything is dead
+	if rabbit_count == 0 and fox_count == 0:
+		print("🛑 Simulation ended. Everything is dead.")
+		show_population_graph()
+
+func _unhandled_input(event):
+	if event is InputEventKey and event.pressed and event.keycode == KEY_P:
+		if population_graph_instance and is_instance_valid(population_graph_instance):
+			population_graph_instance.queue_free()
+			population_graph_instance = null
+		else:
+			show_population_graph()
+
+func show_population_graph():
+	if population_graph_scene:
+		population_graph_instance = population_graph_scene.instantiate()
+		get_tree().root.add_child(population_graph_instance)
+		population_graph_instance.draw_graph(rabbit_population, fox_population)
 
 func add_entity(entity):
 	if entity not in entities:

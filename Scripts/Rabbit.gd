@@ -6,7 +6,7 @@ class_name Rabbit
 @export var move_speed: float = 2.0
 @export var move_distance: float = 5.0
 @export var wait_time_between_moves: float = 1.5
-@export var detection_radius: float = 100.0
+@export var detection_radius: float = 35.0
 @export var danger_radius: float = 10.0
 
 @export var base_health: float = 100.0
@@ -63,7 +63,16 @@ func _ready():
 		mat = mat.duplicate()
 		mesh.set_surface_override_material(0, mat)
 	if mat is StandardMaterial3D:
-		mat.albedo_color = Color(berry_likeness.x, berry_likeness.y, berry_likeness.z)
+		var max_val = max(berry_likeness.x, berry_likeness.y, berry_likeness.z)
+		if max_val > 0.0:
+			mat.albedo_color = Color(
+				berry_likeness.x / max_val,
+				berry_likeness.y / max_val,
+				berry_likeness.z / max_val
+			)
+		else:
+			mat.albedo_color = Color(0.1, 0.1, 0.1)
+
 	
 	rng.randomize()
 	target_position = global_position
@@ -107,10 +116,18 @@ func _process(delta):
 
 	if moving:
 		var move_direction = target_position - global_position
+
+		# Check for deep_water between current and target
+		if is_path_over_deep_water(global_position, target_position):
+			start_next_move()
+			return
+
+		# Continue moving if safe
 		if speed_boost:
 			global_position = global_position.move_toward(target_position, move_speed * delta * 2)
 		else:
 			global_position = global_position.move_toward(target_position, move_speed * delta)
+
 		var target_angle = atan2(move_direction.x, move_direction.z)
 		rotation.y = lerp_angle(rotation.y, target_angle, delta * 5.0)
 
@@ -132,6 +149,19 @@ func _process(delta):
 				start_next_move()
 			else:
 				flee()
+
+func is_path_over_deep_water(from_pos: Vector3, to_pos: Vector3) -> bool:
+	var space_state = get_world_3d().direct_space_state
+	var query = PhysicsRayQueryParameters3D.create(from_pos + Vector3.UP * 1.0, to_pos + Vector3.UP * 1.0)
+	query.collide_with_areas = true
+	query.collide_with_bodies = true
+
+	var result = space_state.intersect_ray(query)
+	if result and result.has("collider"):
+		var collider = result["collider"]
+		if collider.is_in_group("deep_water"):
+			return true
+	return false
 
 func _physics_process(_delta):
 	pass # No nav-based movement needed anymore
@@ -278,7 +308,7 @@ func consume_food(food: Node3D):
 		if food.quantity >= 1:
 			food.consume()
 			if food.type == 0:
-				max_health += 1
+				max_health += 10
 			elif food.type == 1:
 				toxic = true
 				temp_timer2 = 0.0

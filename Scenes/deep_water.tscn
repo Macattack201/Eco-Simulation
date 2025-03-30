@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://c1t14t3lp1huj"]
+[gd_scene load_steps=5 format=3 uid="uid://c1t14t3lp1huj"]
 
 [ext_resource type="Script" path="res://Scripts/WaterSource.gd" id="1_glhkd"]
 
@@ -8,9 +8,22 @@ albedo_color = Color(0, 0.168627, 0.592157, 1)
 [sub_resource type="BoxMesh" id="BoxMesh_lt7r5"]
 material = SubResource("StandardMaterial3D_uh2ny")
 
-[node name="Water" type="StaticBody3D"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_a1yob"]
+
+[node name="Water" type="StaticBody3D" groups=["deep_water"]]
 script = ExtResource("1_glhkd")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.001, -0.5, 0.003)
 mesh = SubResource("BoxMesh_lt7r5")
+
+[node name="Area3D" type="Area3D" parent="."]
+visibility_parent = NodePath("../MeshInstance3D")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 3.48754, 0, 0, 0, 1, 0, 0, 0)
+shape = SubResource("BoxShape3D_a1yob")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 3.48754, 0, 0, 0, 1, 0, 0, 0)
+shape = SubResource("BoxShape3D_a1yob")

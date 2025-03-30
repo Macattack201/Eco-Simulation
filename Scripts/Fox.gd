@@ -4,10 +4,10 @@ class_name Fox
 
 @export var fox_scene: PackedScene
 
-@export var move_speed: float = 4.0
-@export var move_distance: float = 12.0
+@export var move_speed: float = 5.0
+@export var move_distance: float = 15.0
 @export var wait_time_between_moves: float = 1.5
-@export var detection_radius: float = 100.0
+@export var detection_radius: float = 45.0
 
 @export var hunger_increase_rate: float = 1.0
 @export var thirst_increase_rate: float = 1.5
@@ -67,6 +67,12 @@ func _process(delta):
 
 	if moving:
 		var move_direction = target_position - global_position
+
+		# Check for deep_water between current and target
+		if is_path_over_deep_water(global_position, target_position):
+			start_next_move()
+			return
+		
 		global_position = global_position.move_toward(target_position, move_speed * delta)
 
 		if move_direction.length() > 0.01:
@@ -90,6 +96,19 @@ func _process(delta):
 			target_node = null
 
 			start_next_move()
+
+func is_path_over_deep_water(from_pos: Vector3, to_pos: Vector3) -> bool:
+	var space_state = get_world_3d().direct_space_state
+	var query = PhysicsRayQueryParameters3D.create(from_pos + Vector3.UP * 1.0, to_pos + Vector3.UP * 1.0)
+	query.collide_with_areas = true
+	query.collide_with_bodies = true
+
+	var result = space_state.intersect_ray(query)
+	if result and result.has("collider"):
+		var collider = result["collider"]
+		if collider.is_in_group("deep_water"):
+			return true
+	return false
 
 func start_next_move():
 	var wait_timer = Timer.new()

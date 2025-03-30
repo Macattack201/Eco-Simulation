@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://bplr3273atjyp"]
+[gd_scene load_steps=12 format=3 uid="uid://bplr3273atjyp"]
 
 [ext_resource type="Script" path="res://Scripts/CameraController.gd" id="1_wh42a"]
 [ext_resource type="Script" path="res://Scripts/SimulationManager.gd" id="2_8u4sf"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://pig7p4o5bj85" path="res://Scenes/water.tscn" id="7_mnckt"]
 [ext_resource type="PackedScene" uid="uid://c1t14t3lp1huj" path="res://Scenes/deep_water.tscn" id="8_0nwb2"]
 [ext_resource type="PackedScene" uid="uid://j7acu3up0o8d" path="res://Scenes/sand.tscn" id="8_v1p3o"]
+[ext_resource type="PackedScene" uid="uid://bsl2erpc2trrx" path="res://Scenes/PopulationGraph.tscn" id="10_yd5tu"]
 
 [sub_resource type="Environment" id="Environment_y4t8l"]
 ambient_light_source = 2
@@ -38,6 +39,19 @@ berry_scene = ExtResource("4_s2ek3")
 water_scene = ExtResource("7_mnckt")
 sand_scene = ExtResource("8_v1p3o")
 deep_water_scene = ExtResource("8_0nwb2")
+population_graph_scene = ExtResource("10_yd5tu")
 
 [node name="Water" parent="." instance=ExtResource("8_0nwb2")]
-transform = Transform3D(1000, 0, 0, 0, 1, 0, 0, 0, 1000, 0, -0.1, 0)
+transform = Transform3D(392.025, 0, 0, 0, 1, 0, 0, 0, 100, 98.5093, -0.068, -50.8)
+
+[node name="Water3" parent="." instance=ExtResource("8_0nwb2")]
+transform = Transform3D(1.36159, 0, -99.9994, 0, 1, 0, 392.023, 0, 0.347323, -50.9413, -0.068, 56.4865)
+
+[node name="Water4" parent="." instance=ExtResource("8_0nwb2")]
+transform = Transform3D(1.36159, 0, -99.9994, 0, 1, 0, 392.023, 0, 0.347323, 199.2, -0.068, 71.4539)
+
+[node name="Water5" parent="." instance=ExtResource("8_0nwb2")]
+transform = Transform3D(3.4732, -3.03637e-10, 999.994, 8.74228e-05, 1, 0, 999.994, -8.74223e-08, -3.4732, 85.7976, -2.35332, 71.9206)
+
+[node name="Water2" parent="." instance=ExtResource("8_0nwb2")]
+transform = Transform3D(392.025, 0, 0, 0, 1, 0, 0, 0, 100, 98.5093, -0.068, 199.25)

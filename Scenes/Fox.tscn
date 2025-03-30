@@ -11,7 +11,6 @@ albedo_texture = ExtResource("3_reax7")
 
 [node name="Fox" type="CharacterBody3D" groups=["foxes"]]
 script = ExtResource("1_d71t7")
-fox_scene = null
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)

@@ -1,0 +1,78 @@
+[gd_scene load_steps=3 format=3 uid="uid://bsl2erpc2trrx"]
+
+[ext_resource type="Script" path="res://Scripts/PopulationGraph.gd" id="1_hh725"]
+[ext_resource type="LabelSettings" uid="uid://iah61d30vtdl" path="res://new_label_settings.tres" id="2_gk4er"]
+
+[node name="PopulationGraph" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = 2.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_hh725")
+
+[node name="ColorRect3" type="ColorRect" parent="."]
+z_index = -307
+layout_mode = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+color = Color(0.239216, 0.239216, 0.239216, 0.870588)
+
+[node name="RabbitLine" type="Line2D" parent="."]
+default_color = Color(0, 1, 0.780392, 1)
+
+[node name="FoxLine" type="Line2D" parent="."]
+default_color = Color(1, 0.67451, 0, 1)
+
+[node name="RichTextLabel" type="Label" parent="."]
+layout_mode = 0
+offset_left = 6.0
+offset_right = 152.0
+offset_bottom = 25.0
+text = "Rabbit Population"
+label_settings = ExtResource("2_gk4er")
+
+[node name="RichTextLabel2" type="Label" parent="."]
+layout_mode = 0
+offset_left = 6.0
+offset_top = 27.0
+offset_right = 152.0
+offset_bottom = 52.0
+text = "Fox Population"
+label_settings = ExtResource("2_gk4er")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_left = 154.0
+offset_top = 9.0
+offset_right = 194.0
+offset_bottom = 17.0
+color = Color(0, 1, 0.780392, 1)
+
+[node name="ColorRect2" type="ColorRect" parent="."]
+layout_mode = 0
+offset_left = 154.0
+offset_top = 37.0
+offset_right = 194.0
+offset_bottom = 45.0
+color = Color(1, 0.67451, 0, 1)
+
+[node name="RichTextLabel3" type="Label" parent="."]
+layout_mode = 0
+offset_left = 12.0
+offset_top = 537.0
+offset_right = 158.0
+offset_bottom = 562.0
+text = "Population"
+label_settings = ExtResource("2_gk4er")
+
+[node name="RichTextLabel4" type="Label" parent="."]
+layout_mode = 0
+offset_left = 905.0
+offset_top = 967.0
+offset_right = 1051.0
+offset_bottom = 992.0
+text = "Time(seconds)"
+label_settings = ExtResource("2_gk4er")
