@@ -21,7 +21,6 @@ func _ready():
 		var outer = dir * radius
 		var inner = dir * (radius - thickness)
 
-		# 🔁 Flip the winding order to face upward
 		mesh.surface_add_vertex(Vector3(inner.x, y_offset, inner.y))
 		mesh.surface_add_vertex(Vector3(outer.x, y_offset, outer.y))
 

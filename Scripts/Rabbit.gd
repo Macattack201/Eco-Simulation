@@ -26,7 +26,7 @@ class_name Rabbit
 
 
 @export var gestation_rate: float = 1.0
-@export var gestation_threshold: float = 60.0
+@export var gestation_threshold: float = 45.0
 
 var rng := RandomNumberGenerator.new()
 
@@ -325,7 +325,7 @@ func drink_water(water: Node3D):
 func die():
 	alive = false
 	moving = false
-	print("💀 Rabbit has died.")
+	# print("Rabbit has died.")
 
 	var death_timer := Timer.new()
 	death_timer.wait_time = 1.0
@@ -357,7 +357,7 @@ func try_reproduce():
 
 func reproduce_with(partner: Rabbit):
 	if rabbit_scene == null:
-		push_error("🐇 Reproduction failed: rabbit_scene is not assigned!")
+		# push_error("Reproduction failed: rabbit_scene is not assigned!")
 		return
 
 	can_reproduce = false
@@ -381,7 +381,7 @@ func reproduce_with(partner: Rabbit):
 
 	var baby = rabbit_scene.instantiate()
 	if baby == null or not baby is Rabbit:
-		push_error("🐇 Reproduction failed: instance is not a Rabbit")
+		# push_error("Reproduction failed: instance is not a Rabbit")
 		return
 
 	baby = baby as Rabbit
@@ -400,7 +400,7 @@ func reproduce_with(partner: Rabbit):
 	baby.berry_likeness = Vector3(berry1Like, berry2Like, berry3Like)
 
 	get_tree().current_scene.add_child(baby)
-	print("🐰 New rabbit born! Speed: ", baby.move_speed, ", Distance: ", baby.move_distance, ", Berry Likeness: ", baby.berry_likeness, ", Gestation Rate: ", baby.gestation_rate, ", Health: ", baby.base_health)
+	# print("New rabbit born - Speed: ", baby.move_speed, ", Distance: ", baby.move_distance, ", Berry Likeness: ", baby.berry_likeness, ", Gestation Rate: ", baby.gestation_rate, ", Health: ", baby.base_health)
 
 func mutate_trait(value: float) -> float:
 	var mutation_factor = 1.0 + rng.randf_range(-mutation_strength, mutation_strength)

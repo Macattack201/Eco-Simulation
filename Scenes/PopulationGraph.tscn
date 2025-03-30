@@ -15,9 +15,12 @@ script = ExtResource("1_hh725")
 
 [node name="ColorRect3" type="ColorRect" parent="."]
 z_index = -307
-layout_mode = 0
-offset_right = 1920.0
-offset_bottom = 1080.0
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 color = Color(0.239216, 0.239216, 0.239216, 0.870588)
 
 [node name="RabbitLine" type="Line2D" parent="."]
@@ -60,19 +63,313 @@ offset_bottom = 45.0
 color = Color(1, 0.67451, 0, 1)
 
 [node name="RichTextLabel3" type="Label" parent="."]
-layout_mode = 0
-offset_left = 12.0
-offset_top = 537.0
-offset_right = 158.0
-offset_bottom = 562.0
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 11.0
+offset_top = -12.5
+offset_right = 157.0
+offset_bottom = 12.5
+grow_vertical = 2
 text = "Population"
 label_settings = ExtResource("2_gk4er")
 
 [node name="RichTextLabel4" type="Label" parent="."]
-layout_mode = 0
-offset_left = 905.0
-offset_top = 967.0
-offset_right = 1051.0
-offset_bottom = 992.0
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -73.0
+offset_top = -38.0
+offset_right = 73.0
+offset_bottom = -13.0
+grow_horizontal = 2
+grow_vertical = 0
 text = "Time(seconds)"
 label_settings = ExtResource("2_gk4er")
+horizontal_alignment = 1
+
+[node name="GraphLines" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="VSeparator" type="VSeparator" parent="GraphLines"]
+layout_mode = 0
+offset_left = -14.0
+offset_top = 120.0
+offset_right = 215.0
+offset_bottom = 890.0
+
+[node name="VSeparator2" type="VSeparator" parent="GraphLines"]
+layout_mode = 0
+offset_left = 158.0
+offset_top = 120.0
+offset_right = 387.0
+offset_bottom = 890.0
+
+[node name="VSeparator3" type="VSeparator" parent="GraphLines"]
+layout_mode = 0
+offset_left = 330.0
+offset_top = 120.0
+offset_right = 559.0
+offset_bottom = 890.0
+
+[node name="VSeparator4" type="VSeparator" parent="GraphLines"]
+layout_mode = 0
+offset_left = 502.0
+offset_top = 120.0
+offset_right = 731.0
+offset_bottom = 890.0
+
+[node name="VSeparator5" type="VSeparator" parent="GraphLines"]
+layout_mode = 0
+offset_left = 674.0
+offset_top = 120.0
+offset_right = 903.0
+offset_bottom = 890.0
+
+[node name="VSeparator6" type="VSeparator" parent="GraphLines"]
+layout_mode = 0
+offset_left = 846.0
+offset_top = 120.0
+offset_right = 1075.0
+offset_bottom = 890.0
+
+[node name="VSeparator7" type="VSeparator" parent="GraphLines"]
+layout_mode = 0
+offset_left = 1018.0
+offset_top = 120.0
+offset_right = 1247.0
+offset_bottom = 890.0
+
+[node name="VSeparator8" type="VSeparator" parent="GraphLines"]
+layout_mode = 0
+offset_left = 1190.0
+offset_top = 120.0
+offset_right = 1419.0
+offset_bottom = 890.0
+
+[node name="VSeparator9" type="VSeparator" parent="GraphLines"]
+layout_mode = 0
+offset_left = 1362.0
+offset_top = 120.0
+offset_right = 1591.0
+offset_bottom = 890.0
+
+[node name="VSeparator10" type="VSeparator" parent="GraphLines"]
+layout_mode = 0
+offset_left = 1534.0
+offset_top = 120.0
+offset_right = 1763.0
+offset_bottom = 890.0
+
+[node name="VSeparator11" type="VSeparator" parent="GraphLines"]
+layout_mode = 0
+offset_left = 1706.0
+offset_top = 120.0
+offset_right = 1935.0
+offset_bottom = 890.0
+
+[node name="HSeparator" type="HSeparator" parent="GraphLines"]
+layout_mode = 0
+offset_left = 88.0
+offset_top = 81.0
+offset_right = 1831.0
+offset_bottom = 182.0
+
+[node name="HSeparator2" type="HSeparator" parent="GraphLines"]
+layout_mode = 0
+offset_left = 88.0
+offset_top = 231.0
+offset_right = 1831.0
+offset_bottom = 332.0
+
+[node name="HSeparator3" type="HSeparator" parent="GraphLines"]
+layout_mode = 0
+offset_left = 88.0
+offset_top = 381.0
+offset_right = 1831.0
+offset_bottom = 482.0
+
+[node name="HSeparator4" type="HSeparator" parent="GraphLines"]
+layout_mode = 0
+offset_left = 88.0
+offset_top = 531.0
+offset_right = 1831.0
+offset_bottom = 632.0
+
+[node name="HSeparator5" type="HSeparator" parent="GraphLines"]
+layout_mode = 0
+offset_left = 88.0
+offset_top = 681.0
+offset_right = 1831.0
+offset_bottom = 782.0
+
+[node name="HSeparator6" type="HSeparator" parent="GraphLines"]
+layout_mode = 0
+offset_left = 88.0
+offset_top = 828.0
+offset_right = 1831.0
+offset_bottom = 929.0
+
+[node name="Graph Numbers" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="X1" type="Label" parent="Graph Numbers"]
+layout_mode = 0
+offset_left = 51.0
+offset_top = 900.0
+offset_right = 151.0
+offset_bottom = 923.0
+text = "0"
+horizontal_alignment = 1
+
+[node name="Y1" type="Label" parent="Graph Numbers"]
+layout_mode = 0
+offset_left = -24.0
+offset_top = 867.0
+offset_right = 76.0
+offset_bottom = 890.0
+text = "0"
+horizontal_alignment = 2
+
+[node name="Y2" type="Label" parent="Graph Numbers"]
+layout_mode = 0
+offset_left = -24.0
+offset_top = 720.0
+offset_right = 76.0
+offset_bottom = 743.0
+text = "0"
+horizontal_alignment = 2
+
+[node name="Y3" type="Label" parent="Graph Numbers"]
+layout_mode = 0
+offset_left = -24.0
+offset_top = 570.0
+offset_right = 76.0
+offset_bottom = 593.0
+text = "0"
+horizontal_alignment = 2
+
+[node name="Y4" type="Label" parent="Graph Numbers"]
+layout_mode = 0
+offset_left = -24.0
+offset_top = 420.0
+offset_right = 76.0
+offset_bottom = 443.0
+text = "0"
+horizontal_alignment = 2
+
+[node name="Y5" type="Label" parent="Graph Numbers"]
+layout_mode = 0
+offset_left = -24.0
+offset_top = 270.0
+offset_right = 76.0
+offset_bottom = 293.0
+text = "0"
+horizontal_alignment = 2
+
+[node name="Y6" type="Label" parent="Graph Numbers"]
+layout_mode = 0
+offset_left = -24.0
+offset_top = 120.0
+offset_right = 76.0
+offset_bottom = 143.0
+text = "0"
+horizontal_alignment = 2
+
+[node name="X2" type="Label" parent="Graph Numbers"]
+layout_mode = 0
+offset_left = 223.0
+offset_top = 900.0
+offset_right = 323.0
+offset_bottom = 923.0
+text = "0"
+horizontal_alignment = 1
+
+[node name="X3" type="Label" parent="Graph Numbers"]
+layout_mode = 0
+offset_left = 395.0
+offset_top = 900.0
+offset_right = 495.0
+offset_bottom = 923.0
+text = "0"
+horizontal_alignment = 1
+
+[node name="X4" type="Label" parent="Graph Numbers"]
+layout_mode = 0
+offset_left = 567.0
+offset_top = 900.0
+offset_right = 667.0
+offset_bottom = 923.0
+text = "0"
+horizontal_alignment = 1
+
+[node name="X5" type="Label" parent="Graph Numbers"]
+layout_mode = 0
+offset_left = 739.0
+offset_top = 900.0
+offset_right = 839.0
+offset_bottom = 923.0
+text = "0"
+horizontal_alignment = 1
+
+[node name="X6" type="Label" parent="Graph Numbers"]
+layout_mode = 0
+offset_left = 911.0
+offset_top = 900.0
+offset_right = 1011.0
+offset_bottom = 923.0
+text = "0"
+horizontal_alignment = 1
+
+[node name="X7" type="Label" parent="Graph Numbers"]
+layout_mode = 0
+offset_left = 1084.0
+offset_top = 900.0
+offset_right = 1184.0
+offset_bottom = 923.0
+text = "0"
+horizontal_alignment = 1
+
+[node name="X8" type="Label" parent="Graph Numbers"]
+layout_mode = 0
+offset_left = 1255.0
+offset_top = 900.0
+offset_right = 1355.0
+offset_bottom = 923.0
+text = "0"
+horizontal_alignment = 1
+
+[node name="X9" type="Label" parent="Graph Numbers"]
+layout_mode = 0
+offset_left = 1427.0
+offset_top = 900.0
+offset_right = 1527.0
+offset_bottom = 923.0
+text = "0"
+horizontal_alignment = 1
+
+[node name="X10" type="Label" parent="Graph Numbers"]
+layout_mode = 0
+offset_left = 1599.0
+offset_top = 900.0
+offset_right = 1699.0
+offset_bottom = 923.0
+text = "0"
+horizontal_alignment = 1
+
+[node name="X11" type="Label" parent="Graph Numbers"]
+layout_mode = 0
+offset_left = 1771.0
+offset_top = 900.0
+offset_right = 1871.0
+offset_bottom = 923.0
+text = "0"
+horizontal_alignment = 1

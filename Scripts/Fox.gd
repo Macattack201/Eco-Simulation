@@ -192,7 +192,7 @@ func drink_water(water: Node3D):
 func die():
 	alive = false
 	moving = false
-	print("🦊 Fox has died.")
+	# print("Fox has died.")
 
 	var death_timer := Timer.new()
 	death_timer.wait_time = 1.0
@@ -213,7 +213,7 @@ func seek_mate():
 
 func reproduce_with(partner: Fox):
 	if fox_scene == null:
-		push_error("🦊 Reproduction failed: fox_scene is not assigned!")
+		# push_error("Reproduction failed: fox_scene is not assigned!")
 		return
 
 	can_reproduce = false
@@ -239,7 +239,7 @@ func reproduce_with(partner: Fox):
 	# Create baby
 	var baby = fox_scene.instantiate()
 	if baby == null or not baby is Fox:
-		push_error("🦊 Reproduction failed: instance is not a Fox")
+		# push_error("Reproduction failed: instance is not a Fox")
 		return
 
 	baby = baby as Fox
@@ -250,7 +250,7 @@ func reproduce_with(partner: Fox):
 	baby.move_distance = mutate_trait((move_distance + partner.move_distance) / 2)
 
 	get_tree().current_scene.add_child(baby)
-	print("🦊 New fox born! Speed: ", baby.move_speed, ", Distance: ", baby.move_distance, ", Gestation Rate: ", baby.gestation_rate)
+	# print("New fox born - Speed: ", baby.move_speed, ", Distance: ", baby.move_distance, ", Gestation Rate: ", baby.gestation_rate)
 
 func mutate_trait(value: float) -> float:
 	var mutation_factor = 1.0 + rng.randf_range(-mutation_strength, mutation_strength)

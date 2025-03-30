@@ -43,11 +43,6 @@ func _on_step_timer_timeout():
 	rabbit_population.append(rabbit_count)
 	fox_population.append(fox_count)
 
-	# Stop if everything is dead
-	if rabbit_count == 0 and fox_count == 0:
-		print("🛑 Simulation ended. Everything is dead.")
-		show_population_graph()
-
 func _unhandled_input(event):
 	if event is InputEventKey and event.pressed and event.keycode == KEY_P:
 		if population_graph_instance and is_instance_valid(population_graph_instance):
@@ -70,7 +65,9 @@ func remove_entity(entity):
 	entities.erase(entity)
 
 func generate_world():
-	terrain_noise.seed = randi()
+	# var seed = randi()
+	var seed = 1971916262
+	terrain_noise.seed = seed
 	terrain_noise.frequency = 0.01
 	terrain_noise.noise_type = FastNoiseLite.TYPE_SIMPLEX
 
@@ -161,12 +158,12 @@ func spawn_entities_on_positions(scene: PackedScene, count: int, positions: Arra
 
 func spawn_entities(scene: PackedScene, count: int, add_to_entities: bool):
 	if scene == null:
-		print("Error: Scene not assigned!")
+		# print("Error: Scene not assigned!")
 		return
 	for i in range(count):
 		var entity = scene.instantiate()
 		if entity == null:
-			print("Error: Failed to instantiate entity from scene.")
+			# print("Error: Failed to instantiate entity from scene.")
 			continue
 		var x = randi() % grid_size
 		var y = randi() % grid_size

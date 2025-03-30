@@ -1,0 +1,17 @@
+[remap]
+
+importer="csv_translation"
+type="Translation"
+uid="uid://bs61sbfthdgkd"
+
+[deps]
+
+files=["res://population_data.rabbits.translation", "res://population_data.foxes.translation"]
+
+source_file="res://population_data.csv"
+dest_files=["res://population_data.rabbits.translation", "res://population_data.foxes.translation"]
+
+[params]
+
+compress=true
+delimiter=0
