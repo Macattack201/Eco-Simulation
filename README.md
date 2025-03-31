@@ -1,7 +1,7 @@
 # Diverse Ecosystem Implementation
  This project aims to implement a Bio-Diverse Ecosystem Simulation, a model representing interactions between rabbits, foxes, and berries. The goal of the simulation is to explore the impact of different berry effects on rabbit populations, their adaptations, and biodiversity.
  
- ![image](https://github.com/user-attachments/assets/0f509d64-12d2-4f52-b180-39f8ff63b6b1)
+ ![image]("https://github.com/Macattack201/eco-simulation/Assets/Screenshots/Screenshot2025-03-30115500.png")
  
  ## Description
  
