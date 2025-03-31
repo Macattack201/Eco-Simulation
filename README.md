@@ -25,8 +25,8 @@
  
  1. **Clone the repository:**
     ```sh
-    git clone https://github.com/yourusername/diverse-ecosystem.git
-    cd diverse-ecosystem
+    git clone https://github.com/macattack201/eco-simulation.git
+    cd eco-simulation
     ```
  2. **Open Godot**
  3. **Load the project folder and start the simulation**
