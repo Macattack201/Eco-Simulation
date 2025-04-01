@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://Scripts/SimulationManager.gd" id="2_8u4sf"]
 [ext_resource type="PackedScene" uid="uid://b73138i56r0b" path="res://Scenes/grass.tscn" id="3_qxmge"]
 [ext_resource type="PackedScene" uid="uid://csj0hn6ep1x2h" path="res://Scenes/rabbit.tscn" id="4_8dx6l"]
-[ext_resource type="PackedScene" uid="uid://c3bpm3qoopv1u" path="res://Scenes/fox.tscn" id="4_8vg44"]
+[ext_resource type="PackedScene" uid="uid://c3bpm3qoopv1u" path="res://Scenes/wolf.tscn" id="4_8vg44"]
 [ext_resource type="PackedScene" uid="uid://b0f4yxvgpr3qc" path="res://Scenes/berry.tscn" id="4_s2ek3"]
 [ext_resource type="PackedScene" uid="uid://pig7p4o5bj85" path="res://Scenes/water.tscn" id="7_mnckt"]
 [ext_resource type="PackedScene" uid="uid://c1t14t3lp1huj" path="res://Scenes/deep_water.tscn" id="8_0nwb2"]

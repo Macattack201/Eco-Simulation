@@ -30,7 +30,7 @@ class_name Rabbit
 
 var rng := RandomNumberGenerator.new()
 
-@export var berry_likeness = Vector3(rng.randf_range(0.1, 0.11), rng.randf_range(0.1, 0.11), rng.randf_range(0.1, 0.11))
+@export var berry_likeness = Vector3(rng.randf_range(0.1, 0.13), rng.randf_range(0.1, 0.11), rng.randf_range(0.1, 0.11))
 
 var hunger: float = rng.randf_range(0.0, 10.0)
 var thirst: float = rng.randf_range(0.0, 10.0)

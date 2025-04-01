@@ -88,7 +88,7 @@ func draw_graph(rabbit_data: Array, fox_data: Array):
 		save_csv(rabbit_data, fox_data)
 
 func save_csv(rabbit_data: Array, fox_data: Array):
-	var filename = "C:/Users/gcrav/OneDrive/Documents/GitHub/Eco-Simulation/population_data.csv"
+	var filename = "C:/Users/public/Documents/population_data.csv"
 	var file = FileAccess.open(filename, FileAccess.WRITE)
 	if not file:
 		return

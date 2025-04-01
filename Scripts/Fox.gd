@@ -46,7 +46,7 @@ func _ready():
 	add_to_group("foxes")
 	
 	if fox_scene == null:
-		fox_scene = load("res://Scenes/fox.tscn")
+		fox_scene = load("res://Scenes/wolf.tscn")
 	
 	start_next_move()
 
