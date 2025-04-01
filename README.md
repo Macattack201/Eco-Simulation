@@ -1,7 +1,7 @@
 # Diverse Ecosystem Implementation
  This project aims to implement a Bio-Diverse Ecosystem Simulation, a model representing interactions between rabbits, foxes, and berries. The goal of the simulation is to explore the impact of different berry effects on rabbit populations, their adaptations, and biodiversity.
  
- ![image](https://github.com/user-attachments/assets/0f509d64-12d2-4f52-b180-39f8ff63b6b1)
+ ![[image]("https://github.com/Macattack201/Eco-Simulation/Assets/Screenshots/Screenshot2025-03-30115500.png")](https://github.com/Macattack201/Eco-Simulation/blob/main/Assets/Screenshots/Screenshot2025-03-30115500.png)
  
  ## Description
  
@@ -25,8 +25,8 @@
  
  1. **Clone the repository:**
     ```sh
-    git clone https://github.com/yourusername/diverse-ecosystem.git
-    cd diverse-ecosystem
+    git clone https://github.com/macattack201/eco-simulation.git
+    cd eco-simulation
     ```
  2. **Open Godot**
  3. **Load the project folder and start the simulation**
@@ -60,7 +60,8 @@
          target.queue_free()  # Rabbit is caught
          hunger = 100.0  # Reset fox hunger
  ```
- 
+ ### 3. Population Tracking
+ ![[image](https://github.com/Macattack201/Eco-Simulation/blob/main/Assets/Screenshots/Screenshot2025-03-30174034.png)](https://github.com/Macattack201/Eco-Simulation/blob/main/Assets/Screenshots/Screenshot2025-03-30174034.png)
  ## Future Features
  
  * **Better Movement** - The movement is currently unpredictable and choppy
